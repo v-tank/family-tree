@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { FamilyTreeProps, Relationship } from "./types/types";
+import { FamilyTree } from "./components/FamilyTree";
+import "./App.css";
 
-function App() {
+// Render the component
+const App: React.FC = () => {
+  const familyTree: FamilyTreeProps = {
+    client: { name: "John", relationship: Relationship.Client },
+    spouse: { name: "Samantha", relationship: Relationship.Spouse },
+    children: [
+      { name: "Olivia 1", relationship: Relationship.Child },
+      { name: "Jackson 1", relationship: Relationship.Child },
+      { name: "Shaun 1", relationship: Relationship.Child },
+      { name: "Cody 1", relationship: Relationship.Child },
+      { name: "Ruby 1", relationship: Relationship.Child },
+    ],
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <FamilyTree tree={familyTree} />
     </div>
   );
-}
+};
 
 export default App;
